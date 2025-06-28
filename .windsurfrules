@@ -1,0 +1,32 @@
+# Private PDF Project Rules
+
+## PDF Processing Context
+
+-   Remember that all PDF processing is done locally using WebAssembly
+-   Never suggest server-side PDF processing solutions
+-   Prioritize client-side processing techniques using pdf.js and pdf-lib
+
+## Code Guidelines
+
+-   Keep all PDF operations in the browser without uploading files to external servers
+-   Use WebAssembly for performance-intensive operations
+-   Support offline functionality - assume the user may not have an internet connection
+-   Always consider memory usage when dealing with large PDF files
+-   Use react as the frontend library and plain css for styling
+
+## Project Architecture
+
+-   PDF processing worker should handle intensive operations in a separate thread
+-   UI components should be responsive while PDF operations run in the background
+-   Follow existing pattern of worker/hook structure
+
+## Security Guidelines
+
+-   Never suggest code that would expose user's PDF content to external services
+-   Prioritize privacy and ensure all data stays on the user's device
+-   Never include tracking or analytics code that shares document data
+
+## Documentation
+
+-   When explaining PDF operations, always clarify they happen entirely client-side
+-   Use clear comments when suggesting WebAssembly PDF operations
