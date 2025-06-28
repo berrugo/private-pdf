@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import * as pdfjsLib from "pdfjs-dist/build/pdf.mjs";
 import { usePdfProcessor } from "./hooks/usePdfProcessor";
+import LandingPage from "./components/LandingPage";
 import FileUploader from "./components/FileUploader";
 import ThumbnailGallery from "./components/ThumbnailGallery";
 import "./App.css";
@@ -45,6 +46,8 @@ function App() {
     const [compressionLevel, setCompressionLevel] = useState("medium");
     const [processingStatus, setProcessingStatus] = useState(null);
     const [processingProgress, setProcessingProgress] = useState(0);
+    // Add state to control landing page visibility
+    const [showLandingPage, setShowLandingPage] = useState(true);
 
     // Use our custom PDF processor hook
     const {
@@ -76,6 +79,9 @@ function App() {
     // Handle file selection for multiple files
     const handleFileSelect = async (files) => {
         if (!files || files.length === 0) return;
+
+        // Hide landing page when files are selected
+        setShowLandingPage(false);
 
         // Store the list of files for reference
         setPdfFiles(files);
@@ -232,6 +238,21 @@ function App() {
             }, 5000);
         }
     };
+
+    // Handle returning to landing page
+    const handleReturnToLanding = () => {
+        setShowLandingPage(true);
+        setPdfFiles([]);
+        setPdfInfo(null);
+        setPagesToKeep([]);
+        setProcessingStatus(null);
+        setProcessingProgress(0);
+    };
+
+    // Show landing page if no PDF is loaded or if explicitly requested
+    if (showLandingPage && !pdfInfo) {
+        return <LandingPage onFileSelect={handleFileSelect} isLoading={isLoading} />;
+    }
 
     return (
         <div className="app-container">
@@ -412,11 +433,7 @@ function App() {
                                 </button>
                                 <button
                                     className="outline-button"
-                                    onClick={() => {
-                                        // Clear all files and return to uploader
-                                        setPdfFiles([]);
-                                        setPdfInfo(null);
-                                    }}
+                                    onClick={handleReturnToLanding}
                                 >
                                     Upload New Files
                                 </button>
