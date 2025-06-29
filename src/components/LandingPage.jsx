@@ -14,7 +14,8 @@ import {
     Minimize2,
     Users,
     Award,
-    TrendingUp
+    TrendingUp,
+    Github
 } from 'lucide-react';
 
 const LandingPage = ({ onFileSelect, isLoading }) => {
@@ -39,9 +40,9 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
             color: "from-purple-500 to-pink-600"
         },
         {
-            icon: <Lock className="w-8 h-8" />,
-            title: "Secure by Design",
-            description: "End-to-end encryption ensures your sensitive documents remain completely confidential.",
+            icon: <Github className="w-8 h-8" />,
+            title: "Open Source",
+            description: "Fully transparent and community-driven. Inspect the code, contribute improvements, and trust in complete openness.",
             color: "from-pink-500 to-red-600"
         },
         {
@@ -241,12 +242,12 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                         <div className="feature-card-updated">
                             <div className="feature-icon-updated">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                                    <path d="M9 18c-4.51 2-5-2-7-2"/>
                                 </svg>
                             </div>
-                            <h3>Secure by Design</h3>
-                            <p>End-to-end encryption ensures your sensitive documents remain completely confidential.</p>
+                            <h3>Open Source</h3>
+                            <p>Fully transparent and community-driven. Inspect the code, contribute improvements, and trust in complete openness.</p>
                         </div>
 
                         <div className="feature-card-updated">
