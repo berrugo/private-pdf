@@ -239,7 +239,7 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                 </svg>
                             </div>
                             <h3>Full-Featured</h3>
-                            <p>Complete PDF toolkit: merge, split, compress, convert, annotate, and password protect.</p>
+                            <p>Complete PDF toolkit: merge, split, compress, remove and reorder pages.</p>
                         </div>
                     </div>
                 </div>
