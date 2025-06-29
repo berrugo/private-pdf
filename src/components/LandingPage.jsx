@@ -134,7 +134,13 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                 <div className="nav-container">
                     <div className="nav-brand">
                         <div className="nav-brand-icon">
-                            <FileText className="w-5 h-5 text-white" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+                                <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+                                <path d="M10 9H8"/>
+                                <path d="M16 13H8"/>
+                                <path d="M16 17H8"/>
+                            </svg>
                         </div>
                         <span className="brand-text">PrivatePDF</span>
                     </div>
@@ -219,7 +225,9 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                     <div className="features-grid-updated">
                         <div className="feature-card-updated">
                             <div className="feature-icon-updated">
-                                <Shield className="w-8 h-8 text-white" />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+                                </svg>
                             </div>
                             <h3>100% Private</h3>
                             <p>All processing happens in your browser. No files ever leave your device or touch our servers.</p>
@@ -227,7 +235,9 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
 
                         <div className="feature-card-updated">
                             <div className="feature-icon-updated">
-                                <Zap className="w-8 h-8 text-white" />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                                </svg>
                             </div>
                             <h3>Lightning Fast</h3>
                             <p>Instant PDF processing with no upload wait times. Convert, merge, and edit PDFs in seconds.</p>
@@ -235,7 +245,10 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
 
                         <div className="feature-card-updated">
                             <div className="feature-icon-updated">
-                                <Lock className="w-8 h-8 text-white" />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
                             </div>
                             <h3>Secure by Design</h3>
                             <p>End-to-end encryption ensures your sensitive documents remain completely confidential.</p>
@@ -243,7 +256,13 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
 
                         <div className="feature-card-updated">
                             <div className="feature-icon-updated">
-                                <FileText className="w-8 h-8 text-white" />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+                                    <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+                                    <path d="M10 9H8"/>
+                                    <path d="M16 13H8"/>
+                                    <path d="M16 17H8"/>
+                                </svg>
                             </div>
                             <h3>Full-Featured</h3>
                             <p>Complete PDF toolkit: merge, split, compress, convert, annotate, and password protect.</p>
@@ -338,7 +357,13 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                         <div className="footer-brand">
                             <div className="footer-logo">
                                 <div className="footer-brand-icon">
-                                    <FileText className="w-5 h-5 text-white" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+                                        <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+                                        <path d="M10 9H8"/>
+                                        <path d="M16 13H8"/>
+                                        <path d="M16 17H8"/>
+                                    </svg>
                                 </div>
                                 <span>PrivatePDF</span>
                             </div>
