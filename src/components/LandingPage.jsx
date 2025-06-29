@@ -11,7 +11,7 @@ import {
     ArrowRight,
     Upload,
     Shuffle,
-    Compress,
+    Minimize2,
     Users,
     Award,
     TrendingUp
@@ -64,7 +64,7 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
             description: "Remove pages, reorder, and customize"
         },
         {
-            icon: <Compress className="w-6 h-6" />,
+            icon: <Minimize2 className="w-6 h-6" />,
             title: "Optimize & Download",
             description: "Apply compression and save your result"
         }
