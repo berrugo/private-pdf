@@ -71,27 +71,6 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
         }
     ];
 
-    const testimonials = [
-        {
-            name: "Sarah Chen",
-            role: "Legal Professional",
-            content: "Finally, a PDF tool I can trust with confidential client documents. The privacy-first approach is exactly what our firm needed.",
-            rating: 5
-        },
-        {
-            name: "Marcus Rodriguez",
-            role: "Financial Advisor",
-            content: "The speed and security are unmatched. I process dozens of financial PDFs daily without any privacy concerns.",
-            rating: 5
-        },
-        {
-            name: "Emma Thompson",
-            role: "Healthcare Manager",
-            content: "HIPAA compliance made simple. This tool lets us handle patient documents with complete confidence.",
-            rating: 5
-        }
-    ];
-
     const stats = [
         { icon: <Users className="w-6 h-6" />, value: "50K+", label: "Users Trust Us" },
         { icon: <FileText className="w-6 h-6" />, value: "2M+", label: "PDFs Processed" },
@@ -147,7 +126,6 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                     <div className="nav-links">
                         <a href="#features" className="nav-link">Features</a>
                         <a href="#how-it-works" className="nav-link">How it Works</a>
-                        <a href="#reviews" className="nav-link">Reviews</a>
                         <button 
                             className="nav-cta-button"
                             onClick={() => document.querySelector('.file-input').click()}
@@ -286,38 +264,6 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                         <ArrowRight className="w-6 h-6" />
                                     </div>
                                 )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Testimonials Section */}
-            <section id="reviews" className="testimonials-section-new">
-                <div className="section-container">
-                    <div className="section-header-new">
-                        <h2>Trusted by Professionals</h2>
-                        <p>See what industry leaders say about our privacy-first approach</p>
-                    </div>
-
-                    <div className="testimonials-grid-new">
-                        {testimonials.map((testimonial, index) => (
-                            <div key={index} className="testimonial-card-new">
-                                <div className="testimonial-rating-new">
-                                    {[...Array(testimonial.rating)].map((_, i) => (
-                                        <Star key={i} className="w-4 h-4 filled" />
-                                    ))}
-                                </div>
-                                <p>"{testimonial.content}"</p>
-                                <div className="testimonial-author-new">
-                                    <div className="author-avatar-new">
-                                        {testimonial.name.charAt(0)}
-                                    </div>
-                                    <div>
-                                        <div className="author-name-new">{testimonial.name}</div>
-                                        <div className="author-role-new">{testimonial.role}</div>
-                                    </div>
-                                </div>
                             </div>
                         ))}
                     </div>
