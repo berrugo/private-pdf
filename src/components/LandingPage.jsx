@@ -206,28 +206,46 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                 </div>
             </section>
 
-            {/* Features Section */}
-            <section id="features" className="features-section-new">
-                <div className="section-container">
-                    <div className="section-header-new">
+            {/* Features Section - Updated Design */}
+            <section id="features" className="features-section-updated">
+                <div class="features-container-updated">
+                    <div className="features-header-updated">
                         <h2>Why Choose PrivatePDF?</h2>
                         <p>Built from the ground up with privacy and security as core principles</p>
                     </div>
 
-                    <div className="features-grid-new">
-                        {features.map((feature, index) => (
-                            <div 
-                                key={index} 
-                                className="feature-card-new"
-                                onMouseEnter={() => setActiveFeature(index)}
-                            >
-                                <div className={`feature-icon-new bg-gradient-to-br ${feature.color}`}>
-                                    {feature.icon}
-                                </div>
-                                <h3>{feature.title}</h3>
-                                <p>{feature.description}</p>
+                    <div className="features-grid-updated">
+                        <div className="feature-card-updated">
+                            <div className="feature-icon-updated">
+                                <Shield className="w-8 h-8 text-white" />
                             </div>
-                        ))}
+                            <h3>100% Private</h3>
+                            <p>All processing happens in your browser. No files ever leave your device or touch our servers.</p>
+                        </div>
+
+                        <div className="feature-card-updated">
+                            <div className="feature-icon-updated">
+                                <Zap className="w-8 h-8 text-white" />
+                            </div>
+                            <h3>Lightning Fast</h3>
+                            <p>Instant PDF processing with no upload wait times. Convert, merge, and edit PDFs in seconds.</p>
+                        </div>
+
+                        <div className="feature-card-updated">
+                            <div className="feature-icon-updated">
+                                <Lock className="w-8 h-8 text-white" />
+                            </div>
+                            <h3>Secure by Design</h3>
+                            <p>End-to-end encryption ensures your sensitive documents remain completely confidential.</p>
+                        </div>
+
+                        <div className="feature-card-updated">
+                            <div className="feature-icon-updated">
+                                <FileText className="w-8 h-8 text-white" />
+                            </div>
+                            <h3>Full-Featured</h3>
+                            <p>Complete PDF toolkit: merge, split, compress, convert, annotate, and password protect.</p>
+                        </div>
                     </div>
                 </div>
             </section>
