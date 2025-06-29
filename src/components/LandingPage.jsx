@@ -14,7 +14,8 @@ import {
     Minimize2,
     Users,
     Award,
-    TrendingUp
+    TrendingUp,
+    Play
 } from 'lucide-react';
 
 const LandingPage = ({ onFileSelect, isLoading }) => {
@@ -29,25 +30,25 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
         {
             icon: <Shield className="w-8 h-8" />,
             title: "100% Private",
-            description: "All processing happens in your browser. No uploads, no tracking, no data collection.",
+            description: "All processing happens in your browser. No files ever leave your device or touch our servers.",
             color: "from-blue-500 to-purple-600"
         },
         {
             icon: <Zap className="w-8 h-8" />,
             title: "Lightning Fast",
-            description: "WebAssembly-powered processing for instant results without server delays.",
+            description: "Instant PDF processing with no upload wait times. Convert, merge, and edit PDFs in seconds.",
             color: "from-purple-500 to-pink-600"
         },
         {
-            icon: <FileText className="w-8 h-8" />,
-            title: "Full Control",
-            description: "Reorder, remove, merge, and compress pages with professional-grade tools.",
+            icon: <Lock className="w-8 h-8" />,
+            title: "Secure by Design",
+            description: "End-to-end encryption ensures your sensitive documents remain completely confidential.",
             color: "from-pink-500 to-red-600"
         },
         {
-            icon: <Download className="w-8 h-8" />,
-            title: "Instant Download",
-            description: "Get your modified PDF immediately with no waiting or account required.",
+            icon: <FileText className="w-8 h-8" />,
+            title: "Full-Featured",
+            description: "Complete PDF toolkit: merge, split, compress, convert, annotate, and password protect.",
             color: "from-red-500 to-orange-600"
         }
     ];
@@ -56,17 +57,17 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
         {
             icon: <Upload className="w-6 h-6" />,
             title: "Upload Your PDF",
-            description: "Drag and drop or select your PDF files"
+            description: "Drag and drop or click to select your PDF files. Everything stays local to your device."
         },
         {
             icon: <Shuffle className="w-6 h-6" />,
-            title: "Edit & Rearrange",
-            description: "Remove pages, reorder, and customize"
+            title: "Choose Your Action",
+            description: "Select from our comprehensive suite of PDF tools - merge, split, compress, or convert."
         },
         {
             icon: <Minimize2 className="w-6 h-6" />,
-            title: "Optimize & Download",
-            description: "Apply compression and save your result"
+            title: "Process & Download",
+            description: "Your PDF is processed instantly in your browser and ready for immediate download."
         }
     ];
 
@@ -74,19 +75,19 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
         {
             name: "Sarah Chen",
             role: "Legal Professional",
-            content: "Finally, a PDF editor that respects privacy. Perfect for sensitive documents.",
+            content: "Finally, a PDF tool I can trust with confidential client documents. The privacy-first approach is exactly what our firm needed.",
             rating: 5
         },
         {
             name: "Marcus Rodriguez",
-            role: "Freelance Designer",
-            content: "The drag-and-drop interface is intuitive and the compression works great.",
+            role: "Financial Advisor",
+            content: "The speed and security are unmatched. I process dozens of financial PDFs daily without any privacy concerns.",
             rating: 5
         },
         {
-            name: "Dr. Emily Watson",
-            role: "Research Scientist",
-            content: "No more worrying about uploading confidential research papers online.",
+            name: "Emma Thompson",
+            role: "Healthcare Manager",
+            content: "HIPAA compliance made simple. This tool lets us handle patient documents with complete confidence.",
             rating: 5
         }
     ];
@@ -128,211 +129,226 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
 
     return (
         <div className={`landing-page ${isVisible ? 'visible' : ''}`}>
-            {/* Hero Section */}
-            <section className="hero-section">
-                <div className="hero-content">
-                    <div className="hero-badge">
-                        <Lock className="w-4 h-4" />
-                        <span>100% Private & Secure</span>
+            {/* Navigation Header */}
+            <nav className="nav-header">
+                <div className="nav-container">
+                    <div className="nav-brand">
+                        <FileText className="w-8 h-8 text-purple-600" />
+                        <span className="brand-text">PrivatePDF</span>
                     </div>
-                    
-                    <h1 className="hero-title">
-                        Edit PDFs Privately
-                        <span className="gradient-text"> in Your Browser</span>
-                    </h1>
-                    
-                    <p className="hero-description">
-                        Professional PDF editing without compromising your privacy. 
-                        Reorder pages, remove content, merge documents, and compress files 
-                        - all processed locally in your browser.
-                    </p>
-
-                    <div className="hero-upload-area">
-                        <div 
-                            className="upload-dropzone"
-                            onDrop={handleDrop}
-                            onDragOver={handleDragOver}
+                    <div className="nav-links">
+                        <a href="#features" className="nav-link">Features</a>
+                        <a href="#how-it-works" className="nav-link">How it Works</a>
+                        <a href="#reviews" className="nav-link">Reviews</a>
+                        <button 
+                            className="nav-cta-button"
+                            onClick={() => document.querySelector('.file-input').click()}
                         >
-                            <div className="upload-icon">
-                                <FileText className="w-12 h-12" />
-                            </div>
-                            <h3>Drop your PDF files here</h3>
-                            <p>or click to browse (multiple files supported)</p>
-                            <input
-                                type="file"
-                                accept="application/pdf"
-                                multiple
-                                onChange={handleFileUpload}
-                                disabled={isLoading}
-                                className="file-input"
-                            />
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            {/* Hero Section */}
+            <section className="hero-section-new">
+                <div className="hero-container">
+                    <div className="hero-content-center">
+                        <h1 className="hero-title-new">
+                            Private PDF Processing
+                            <br />
+                            <span className="gradient-text-new">That Actually Protects You</span>
+                        </h1>
+                        
+                        <p className="hero-description-new">
+                            Process PDFs with complete privacy. No uploads, no servers, no data collection.
+                            <br />
+                            Everything happens securely in your browser with enterprise-grade tools.
+                        </p>
+
+                        <div className="hero-buttons">
                             <button 
-                                className="upload-button"
-                                disabled={isLoading}
+                                className="primary-cta-button"
                                 onClick={() => document.querySelector('.file-input').click()}
+                                disabled={isLoading}
                             >
-                                {isLoading ? 'Processing...' : 'Select PDF Files'}
+                                Start Processing PDFs
                                 <ArrowRight className="w-5 h-5" />
                             </button>
+                            <button className="secondary-cta-button">
+                                Watch Demo
+                                <Play className="w-4 h-4" />
+                            </button>
                         </div>
-                        
-                        <div className="privacy-indicators">
-                            <div className="privacy-item">
-                                <Eye className="w-4 h-4" />
-                                <span>No tracking</span>
-                            </div>
-                            <div className="privacy-item">
-                                <Shield className="w-4 h-4" />
-                                <span>No uploads</span>
-                            </div>
-                            <div className="privacy-item">
-                                <Lock className="w-4 h-4" />
-                                <span>100% local</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div className="hero-visual">
-                    <div className="floating-card card-1">
-                        <FileText className="w-6 h-6" />
-                        <span>document.pdf</span>
-                    </div>
-                    <div className="floating-card card-2">
-                        <Shield className="w-6 h-6" />
-                        <span>Encrypted</span>
-                    </div>
-                    <div className="floating-card card-3">
-                        <Zap className="w-6 h-6" />
-                        <span>Instant</span>
-                    </div>
-                </div>
-            </section>
-
-            {/* Stats Section */}
-            <section className="stats-section">
-                <div className="stats-grid">
-                    {stats.map((stat, index) => (
-                        <div key={index} className="stat-item">
-                            <div className="stat-icon">
-                                {stat.icon}
+                        <div className="hero-upload-section">
+                            <div 
+                                className="upload-dropzone-new"
+                                onDrop={handleDrop}
+                                onDragOver={handleDragOver}
+                            >
+                                <div className="upload-icon-new">
+                                    <Upload className="w-8 h-8 text-purple-600" />
+                                </div>
+                                <h3>Drop your PDF files here</h3>
+                                <p>or click to browse • Max 10MB • 100% Private</p>
+                                <input
+                                    type="file"
+                                    accept="application/pdf"
+                                    multiple
+                                    onChange={handleFileUpload}
+                                    disabled={isLoading}
+                                    className="file-input"
+                                />
                             </div>
-                            <div className="stat-value">{stat.value}</div>
-                            <div className="stat-label">{stat.label}</div>
                         </div>
-                    ))}
+                    </div>
                 </div>
             </section>
 
             {/* Features Section */}
-            <section className="features-section">
-                <div className="section-header">
-                    <h2>Why Choose Private PDF?</h2>
-                    <p>Professional PDF editing with uncompromising privacy</p>
-                </div>
+            <section id="features" className="features-section-new">
+                <div className="section-container">
+                    <div className="section-header-new">
+                        <h2>Why Choose PrivatePDF?</h2>
+                        <p>Built from the ground up with privacy and security as core principles</p>
+                    </div>
 
-                <div className="features-grid">
-                    {features.map((feature, index) => (
-                        <div 
-                            key={index} 
-                            className={`feature-card ${activeFeature === index ? 'active' : ''}`}
-                            onMouseEnter={() => setActiveFeature(index)}
-                        >
-                            <div className={`feature-icon bg-gradient-to-br ${feature.color}`}>
-                                {feature.icon}
+                    <div className="features-grid-new">
+                        {features.map((feature, index) => (
+                            <div 
+                                key={index} 
+                                className="feature-card-new"
+                                onMouseEnter={() => setActiveFeature(index)}
+                            >
+                                <div className={`feature-icon-new bg-gradient-to-br ${feature.color}`}>
+                                    {feature.icon}
+                                </div>
+                                <h3>{feature.title}</h3>
+                                <p>{feature.description}</p>
                             </div>
-                            <h3>{feature.title}</h3>
-                            <p>{feature.description}</p>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </section>
 
             {/* How It Works Section */}
-            <section className="how-it-works-section">
-                <div className="section-header">
-                    <h2>How It Works</h2>
-                    <p>Simple, secure, and lightning-fast PDF editing</p>
-                </div>
+            <section id="how-it-works" className="how-it-works-section-new">
+                <div className="section-container">
+                    <div className="section-header-new">
+                        <h2>How It Works</h2>
+                        <p>Three simple steps to secure PDF processing</p>
+                    </div>
 
-                <div className="steps-container">
-                    {steps.map((step, index) => (
-                        <div key={index} className="step-item">
-                            <div className="step-number">{index + 1}</div>
-                            <div className="step-icon">
-                                {step.icon}
+                    <div className="steps-container-new">
+                        {steps.map((step, index) => (
+                            <div key={index} className="step-item-new">
+                                <div className="step-number-new">{String(index + 1).padStart(2, '0')}</div>
+                                <h3>{step.title}</h3>
+                                <p>{step.description}</p>
+                                {index < steps.length - 1 && (
+                                    <div className="step-arrow">
+                                        <ArrowRight className="w-6 h-6" />
+                                    </div>
+                                )}
                             </div>
-                            <h3>{step.title}</h3>
-                            <p>{step.description}</p>
-                            {index < steps.length - 1 && (
-                                <div className="step-connector">
-                                    <ArrowRight className="w-5 h-5" />
-                                </div>
-                            )}
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </section>
 
             {/* Testimonials Section */}
-            <section className="testimonials-section">
-                <div className="section-header">
-                    <h2>Trusted by Professionals</h2>
-                    <p>See what our users say about Private PDF</p>
-                </div>
+            <section id="reviews" className="testimonials-section-new">
+                <div className="section-container">
+                    <div className="section-header-new">
+                        <h2>Trusted by Professionals</h2>
+                        <p>See what industry leaders say about our privacy-first approach</p>
+                    </div>
 
-                <div className="testimonials-grid">
-                    {testimonials.map((testimonial, index) => (
-                        <div key={index} className="testimonial-card">
-                            <div className="testimonial-rating">
-                                {[...Array(testimonial.rating)].map((_, i) => (
-                                    <Star key={i} className="w-4 h-4 filled" />
-                                ))}
-                            </div>
-                            <p>"{testimonial.content}"</p>
-                            <div className="testimonial-author">
-                                <div className="author-avatar">
-                                    {testimonial.name.charAt(0)}
+                    <div className="testimonials-grid-new">
+                        {testimonials.map((testimonial, index) => (
+                            <div key={index} className="testimonial-card-new">
+                                <div className="testimonial-rating-new">
+                                    {[...Array(testimonial.rating)].map((_, i) => (
+                                        <Star key={i} className="w-4 h-4 filled" />
+                                    ))}
                                 </div>
-                                <div>
-                                    <div className="author-name">{testimonial.name}</div>
-                                    <div className="author-role">{testimonial.role}</div>
+                                <p>"{testimonial.content}"</p>
+                                <div className="testimonial-author-new">
+                                    <div className="author-avatar-new">
+                                        {testimonial.name.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <div className="author-name-new">{testimonial.name}</div>
+                                        <div className="author-role-new">{testimonial.role}</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </section>
 
             {/* CTA Section */}
-            <section className="cta-section">
-                <div className="cta-content">
-                    <h2>Ready to Edit Your PDFs Privately?</h2>
-                    <p>Join thousands of users who trust Private PDF for secure document editing</p>
-                    <button 
-                        className="cta-button"
-                        onClick={() => document.querySelector('.file-input').click()}
-                        disabled={isLoading}
-                    >
-                        {isLoading ? 'Processing...' : 'Get Started Now'}
-                        <ArrowRight className="w-5 h-5" />
-                    </button>
-                    <div className="cta-features">
-                        <div className="cta-feature">
-                            <CheckCircle className="w-4 h-4" />
-                            <span>No account required</span>
-                        </div>
-                        <div className="cta-feature">
-                            <CheckCircle className="w-4 h-4" />
-                            <span>100% free to use</span>
-                        </div>
-                        <div className="cta-feature">
-                            <CheckCircle className="w-4 h-4" />
-                            <span>Works offline</span>
+            <section className="cta-section-new">
+                <div className="cta-container">
+                    <div className="cta-content-new">
+                        <h2>Ready to Process PDFs Privately?</h2>
+                        <p>Join thousands of professionals who trust PrivatePDF for secure document processing</p>
+                        <div className="cta-buttons-new">
+                            <button 
+                                className="cta-primary-button"
+                                onClick={() => document.querySelector('.file-input').click()}
+                                disabled={isLoading}
+                            >
+                                Start Processing Now
+                            </button>
+                            <button className="cta-secondary-button">
+                                Learn More
+                            </button>
                         </div>
                     </div>
                 </div>
             </section>
+
+            {/* Footer */}
+            <footer className="footer-new">
+                <div className="footer-container">
+                    <div className="footer-content">
+                        <div className="footer-brand">
+                            <div className="footer-logo">
+                                <FileText className="w-6 h-6 text-purple-600" />
+                                <span>PrivatePDF</span>
+                            </div>
+                            <p>Secure, private PDF processing that never compromises your data.</p>
+                        </div>
+                        
+                        <div className="footer-links">
+                            <div className="footer-column">
+                                <h4>Product</h4>
+                                <a href="#features">Features</a>
+                                <a href="#security">Security</a>
+                                <a href="#pricing">Pricing</a>
+                            </div>
+                            <div className="footer-column">
+                                <h4>Company</h4>
+                                <a href="#about">About</a>
+                                <a href="#blog">Blog</a>
+                                <a href="#contact">Contact</a>
+                            </div>
+                            <div className="footer-column">
+                                <h4>Legal</h4>
+                                <a href="#privacy">Privacy Policy</a>
+                                <a href="#terms">Terms of Service</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className="footer-bottom">
+                        <p>© 2025 PrivatePDF. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 };
