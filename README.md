@@ -1,37 +1,43 @@
-# PDF Editor WASM
+# PrivatePDF
 
-A browser-based PDF editor that processes files entirely on the client-side using WebAssembly (WASM) for privacy. This application allows users to upload PDF files, view thumbnails of each page, select pages for deletion, and save the modified PDF without sending any data to a server.
+A privacy-focused, client-side PDF toolkit that runs entirely in your browser. Process, merge, split, compress, convert, and reorder your PDF files securely without ever uploading them to a server. Built with React and WebAssembly for lightning-fast performance and ultimate privacy.
 
 ## Privacy-First Approach
 
 All PDF processing happens directly in your browser:
 
-- PDF files are never uploaded to any server
-- WebAssembly (WASM) is used for fast and secure processing
-- When you close your browser, all data is automatically cleared
+-   PDF files are never uploaded to any server
+-   WebAssembly (WASM) is used for fast and secure processing
+-   When you close your browser, all data is automatically cleared
 
 ## Features
 
-- Upload PDF documents
-- View thumbnails of all pages
-- Select pages to delete
-- Download the modified PDF with selected pages removed
-- Fully responsive UI works on desktop and mobile
+-   Upload and process multiple PDF documents.
+-   Merge multiple PDFs into a single file.
+-   Split a PDF into individual pages.
+-   Compress PDFs to reduce file size with multiple quality levels.
+-   Delete specific pages from a PDF.
+-   Page reordering and rotation
+-   100% client-side processing using WebAssembly for speed and security.
+-   No file uploads, no servers, no data collection.
+-   Modern, responsive UI for desktop and mobile.
 
 ## Technology Stack
 
-- **React + Vite**: Fast and modern frontend framework
-- **PDF.js**: Mozilla's powerful library for rendering PDFs in the browser
-- **pdf-lib**: Library for creating and modifying PDF documents in pure JavaScript
-- **Web Workers**: For handling PDF processing in background threads
-- **Chakra UI**: Modern component library for the user interface
+-   **React + Vite**: For a fast and modern frontend.
+-   **pdf-lib**: For creating and modifying PDF documents in JavaScript.
+-   **pdf.js**: For rendering PDFs in the browser.
+-   **Web Workers**: To run PDF processing in the background without freezing the UI.
+-   **WebAssembly (WASM)**: For performance-intensive operations like compression.
+-   **Lucide React**: For beautiful and consistent icons.
+-   **Plain CSS**: For custom styling and a lightweight footprint.
 
 ## Development
 
 ### Prerequisites
 
-- Node.js 16.5.0 or higher
-- npm 8.1.4 or higher
+-   Node.js 16.5.0 or higher
+-   npm 8.1.4 or higher
 
 ### Running Locally
 
@@ -50,9 +56,12 @@ The output will be in the `dist` directory and can be deployed to any static web
 
 ## Future Enhancements
 
-- Page reordering functionality
-- Text extraction and editing
-- Adding annotations
-- Merging multiple PDFs
-- Form filling capabilities
-- Signature support
+-   Text extraction and editing
+-   Support for password protected PDFs
+-   Advanced annotation tools (highlight, underline, notes)
+-   Digital signatures
+-   PDF form filling
+
+## License
+
+This project is open source and licensed under the MIT License.
