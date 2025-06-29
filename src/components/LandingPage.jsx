@@ -14,8 +14,7 @@ import {
     Minimize2,
     Users,
     Award,
-    TrendingUp,
-    Play
+    TrendingUp
 } from 'lucide-react';
 
 const LandingPage = ({ onFileSelect, isLoading }) => {
@@ -183,10 +182,6 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                 Start Processing PDFs
                                 <ArrowRight className="w-5 h-5" />
                             </button>
-                            <button className="secondary-cta-button">
-                                Watch Demo
-                                <Play className="w-4 h-4" />
-                            </button>
                         </div>
 
                         <div className="hero-upload-section">
@@ -342,9 +337,6 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                             >
                                 Start Processing Now
                             </button>
-                            <button className="cta-secondary-button">
-                                Learn More
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -368,26 +360,6 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                 <span>PrivatePDF</span>
                             </div>
                             <p>Secure, private PDF processing that never compromises your data.</p>
-                        </div>
-                        
-                        <div className="footer-links">
-                            <div className="footer-column">
-                                <h4>Product</h4>
-                                <a href="#features">Features</a>
-                                <a href="#security">Security</a>
-                                <a href="#pricing">Pricing</a>
-                            </div>
-                            <div className="footer-column">
-                                <h4>Company</h4>
-                                <a href="#about">About</a>
-                                <a href="#blog">Blog</a>
-                                <a href="#contact">Contact</a>
-                            </div>
-                            <div className="footer-column">
-                                <h4>Legal</h4>
-                                <a href="#privacy">Privacy Policy</a>
-                                <a href="#terms">Terms of Service</a>
-                            </div>
                         </div>
                     </div>
                     
