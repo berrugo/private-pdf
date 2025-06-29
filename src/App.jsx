@@ -139,7 +139,9 @@ function App() {
             // If we don't get resultPdfBytes back from the worker, log and return
             if (!resultPdfBytes) {
                 console.error("Failed to create PDF with specified page order");
-                setProcessingStatus("Error: Failed to create PDF with specified page order");
+                setProcessingStatus(
+                    "Error: Failed to create PDF with specified page order"
+                );
                 setProcessingProgress(0);
                 return;
             }
@@ -162,8 +164,10 @@ function App() {
             const compressionProgressCallback = (page, totalPages) => {
                 const baseProgress = 50;
                 const progressPerPage = 40 / totalPages;
-                const currentProgress = baseProgress + (progressPerPage * page);
-                setProcessingStatus(`Compressing page ${page} of ${totalPages}...`);
+                const currentProgress = baseProgress + progressPerPage * page;
+                setProcessingStatus(
+                    `Compressing page ${page} of ${totalPages}...`
+                );
                 setProcessingProgress(Math.min(90, currentProgress));
             };
 
@@ -181,14 +185,16 @@ function App() {
                 setProcessingStatus("Preparing download...");
             } else {
                 console.warn("Compression failed, using uncompressed PDF");
-                setProcessingStatus("Compression failed, using uncompressed PDF");
+                setProcessingStatus(
+                    "Compression failed, using uncompressed PDF"
+                );
                 // Continue with the uncompressed PDF if compression fails
             }
 
             if (resultPdfBytes) {
                 setProcessingProgress(95);
                 setProcessingStatus("Creating download link...");
-                
+
                 // Create a Blob from the PDF data
                 const blob = new Blob([resultPdfBytes], {
                     type: "application/pdf",
@@ -211,16 +217,16 @@ function App() {
 
                 // Trigger the download
                 document.body.appendChild(link);
-                
+
                 setProcessingProgress(100);
                 setProcessingStatus("Download ready!");
-                
+
                 link.click();
                 document.body.removeChild(link);
                 URL.revokeObjectURL(link.href); // Clean up
 
                 console.log("PDF saved successfully");
-                
+
                 // Reset progress after a short delay
                 setTimeout(() => {
                     setProcessingProgress(0);
@@ -229,9 +235,11 @@ function App() {
             }
         } catch (err) {
             console.error("Error saving PDF:", err);
-            setProcessingStatus(`Error: ${err.message || 'Failed to process PDF'}`);
+            setProcessingStatus(
+                `Error: ${err.message || "Failed to process PDF"}`
+            );
             setProcessingProgress(0);
-            
+
             // Reset error state after a delay
             setTimeout(() => {
                 setProcessingStatus(null);
@@ -251,228 +259,293 @@ function App() {
 
     // Show landing page if no PDF is loaded or if explicitly requested
     if (showLandingPage && !pdfInfo) {
-        return <LandingPage onFileSelect={handleFileSelect} isLoading={isLoading} />;
+        return (
+            <LandingPage
+                onFileSelect={handleFileSelect}
+                isLoading={isLoading}
+            />
+        );
     }
 
     return (
-        <div className="app-container">
-            <div className="content-container">
-                <div className="header">
-                    <h1>Edit PDFs Privately in your browser</h1>
-                    <p className="subtitle">
-                        No uploads. No Tracking. 100% secure & local
-                    </p>
+        <>
+            <nav className="nav-header">
+                <div className="nav-container">
+                    <div className="nav-brand">
+                        <div className="nav-brand-icon">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                                <path d="M10 9H8" />
+                                <path d="M16 13H8" />
+                                <path d="M16 17H8" />
+                            </svg>
+                        </div>
+                        <span className="brand-text">PrivatePDF</span>
+                    </div>
+                    <div className="nav-links">
+                        <a href="#features" className="nav-link">
+                            Features
+                        </a>
+                        <a href="#how-it-works" className="nav-link">
+                            How it Works
+                        </a>
+                        <button
+                            className="nav-cta-button"
+                            onClick={() =>
+                                document.querySelector(".file-input").click()
+                            }
+                        >
+                            Get Started
+                        </button>
+                    </div>
                 </div>
+            </nav>
+            <div className="app-container">
+                <div className="content-container">
+                    <div className="header">
+                        <p className="subtitle">
+                            No uploads. No Tracking. 100% secure & local
+                        </p>
+                    </div>
 
-                {!pdfInfo ? (
-                    <FileUploader
-                        onFileSelect={handleFileSelect}
-                        isLoading={isLoading}
-                    />
-                ) : (
-                    <div className="editor-container">
-                        {pdfFiles.length > 1 && pdfInfo?.info?.isMerged && (
-                            <div className="file-selector-container">
-                                <h3>Merged PDFs ({pdfFiles.length})</h3>
-                                <div className="merged-files-list">
-                                    {pdfFiles.map((file, index) => (
-                                        /* Display file item with tooltip showing full filename on hover */
-                                        <div
-                                            key={`file-${index}`}
-                                            className="merged-file-item"
-                                            data-tooltip={file.name}
-                                        >
-                                            <span className="file-icon">
-                                                📄
-                                            </span>
-                                            <span className="file-name">
-                                                {file.name}
-                                            </span>
-                                        </div>
-                                    ))}
-                                </div>
-                                <p className="merge-note">
-                                    All pages from these PDFs have been merged
-                                    into a single document. Rearrange pages as
-                                    needed.
-                                </p>
-                            </div>
-                        )}
-                        <div className="editor-header">
-                            <div>
-                                <h2>
-                                    {pdfInfo?.info?.isMerged
-                                        ? "Merged Document"
-                                        : pdfFile?.name || "PDF Document"}
-                                </h2>
-                                <p className="page-count">
-                                    {pdfInfo.info.numPages} page
-                                    {pdfInfo.info.numPages !== 1 ? "s" : ""}
-                                    {pdfInfo.info.fileSizeBytes && (
-                                        <span
-                                            style={{
-                                                display: "inline-block",
-                                                marginLeft: "5px",
-                                                color: "var(--text-secondary, #666)",
-                                                fontSize: "0.9rem",
-                                            }}
-                                        >
-                                            {" • "}
-                                            {formatFileSize(
-                                                pdfInfo.info.fileSizeBytes
-                                            )}
-                                        </span>
-                                    )}
-                                </p>
-                            </div>
-
-                            <div className="compression-options">
-                                <p className="option-label">
-                                    Compression Level:
-                                </p>
-                                <div className="compression-controls">
-                                    <label className="compression-option">
-                                        <input
-                                            type="radio"
-                                            name="compressionLevel"
-                                            value="low"
-                                            checked={compressionLevel === "low"}
-                                            onChange={(e) =>
-                                                setCompressionLevel(
-                                                    e.target.value
-                                                )
-                                            }
-                                        />
-                                        Low{" "}
-                                        <span className="compression-hint">
-                                            (Better Quality)
-                                        </span>
-                                    </label>
-                                    <label className="compression-option">
-                                        <input
-                                            type="radio"
-                                            name="compressionLevel"
-                                            value="medium"
-                                            checked={
-                                                compressionLevel === "medium"
-                                            }
-                                            onChange={(e) =>
-                                                setCompressionLevel(
-                                                    e.target.value
-                                                )
-                                            }
-                                        />
-                                        Medium{" "}
-                                        <span className="compression-hint">
-                                            (Balanced)
-                                        </span>
-                                    </label>
-                                    <label className="compression-option">
-                                        <input
-                                            type="radio"
-                                            name="compressionLevel"
-                                            value="high"
-                                            checked={
-                                                compressionLevel === "high"
-                                            }
-                                            onChange={(e) =>
-                                                setCompressionLevel(
-                                                    e.target.value
-                                                )
-                                            }
-                                        />
-                                        High{" "}
-                                        <span className="compression-hint">
-                                            (Smaller Files)
-                                        </span>
-                                    </label>
-                                </div>
-                                <p className="compression-description">
-                                    Higher compression reduces file size but may
-                                    lower image quality. The PDF will be
-                                    converted to JPEG images and back to PDF for
-                                    compression.
-                                </p>
-                            </div>
-
-                            {/* Progress bar for PDF processing */}
-                            {processingProgress > 0 && (
-                                <div className="progress-container">
-                                    <div className="progress-bar" style={{ width: `${processingProgress}%` }}></div>
-                                    <div className="progress-status">{processingStatus}</div>
+                    {!pdfInfo ? (
+                        <FileUploader
+                            onFileSelect={handleFileSelect}
+                            isLoading={isLoading}
+                        />
+                    ) : (
+                        <div className="editor-container">
+                            {pdfFiles.length > 1 && pdfInfo?.info?.isMerged && (
+                                <div className="file-selector-container">
+                                    <h3>Merged PDFs ({pdfFiles.length})</h3>
+                                    <div className="merged-files-list">
+                                        {pdfFiles.map((file, index) => (
+                                            /* Display file item with tooltip showing full filename on hover */
+                                            <div
+                                                key={`file-${index}`}
+                                                className="merged-file-item"
+                                                data-tooltip={file.name}
+                                            >
+                                                <span className="file-icon">
+                                                    📄
+                                                </span>
+                                                <span className="file-name">
+                                                    {file.name}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <p className="merge-note">
+                                        All pages from these PDFs have been
+                                        merged into a single document. Rearrange
+                                        pages as needed.
+                                    </p>
                                 </div>
                             )}
-                            
-                            <div className="button-group">
-                                <button
-                                    className="primary-button"
-                                    onClick={handleSavePdf}
-                                    disabled={processingProgress > 0}
-                                >
-                                    {processingProgress > 0
-                                        ? `${processingStatus || 'Processing...'}` 
-                                        : (isLoading ? "Processing..." : "Save Modified PDF")}
-                                </button>
-                                <button
-                                    className="outline-button"
-                                    onClick={() => {
-                                        // Reset now means selecting all pages again
-                                        if (pdfInfo.info.numPages) {
-                                            const allPages = Array.from(
-                                                {
-                                                    length: pdfInfo.info
-                                                        .numPages,
-                                                },
-                                                (_, i) => i + 1
-                                            );
-                                            setPagesToKeep(allPages);
-                                        }
-                                    }}
-                                >
-                                    Reset PDF
-                                </button>
-                                <button
-                                    className="outline-button"
-                                    onClick={handleReturnToLanding}
-                                >
-                                    Upload New Files
-                                </button>
+                            <div className="editor-header">
+                                <div>
+                                    <h2>
+                                        {pdfInfo?.info?.isMerged
+                                            ? "Merged Document"
+                                            : pdfFile?.name || "PDF Document"}
+                                    </h2>
+                                    <p className="page-count">
+                                        {pdfInfo.info.numPages} page
+                                        {pdfInfo.info.numPages !== 1 ? "s" : ""}
+                                        {pdfInfo.info.fileSizeBytes && (
+                                            <span
+                                                style={{
+                                                    display: "inline-block",
+                                                    marginLeft: "5px",
+                                                    color: "var(--text-secondary, #666)",
+                                                    fontSize: "0.9rem",
+                                                }}
+                                            >
+                                                {" • "}
+                                                {formatFileSize(
+                                                    pdfInfo.info.fileSizeBytes
+                                                )}
+                                            </span>
+                                        )}
+                                    </p>
+                                </div>
+
+                                <div className="compression-options">
+                                    <p className="option-label">
+                                        Compression Level:
+                                    </p>
+                                    <div className="compression-controls">
+                                        <label className="compression-option">
+                                            <input
+                                                type="radio"
+                                                name="compressionLevel"
+                                                value="low"
+                                                checked={
+                                                    compressionLevel === "low"
+                                                }
+                                                onChange={(e) =>
+                                                    setCompressionLevel(
+                                                        e.target.value
+                                                    )
+                                                }
+                                            />
+                                            Low{" "}
+                                            <span className="compression-hint">
+                                                (Better Quality)
+                                            </span>
+                                        </label>
+                                        <label className="compression-option">
+                                            <input
+                                                type="radio"
+                                                name="compressionLevel"
+                                                value="medium"
+                                                checked={
+                                                    compressionLevel ===
+                                                    "medium"
+                                                }
+                                                onChange={(e) =>
+                                                    setCompressionLevel(
+                                                        e.target.value
+                                                    )
+                                                }
+                                            />
+                                            Medium{" "}
+                                            <span className="compression-hint">
+                                                (Balanced)
+                                            </span>
+                                        </label>
+                                        <label className="compression-option">
+                                            <input
+                                                type="radio"
+                                                name="compressionLevel"
+                                                value="high"
+                                                checked={
+                                                    compressionLevel === "high"
+                                                }
+                                                onChange={(e) =>
+                                                    setCompressionLevel(
+                                                        e.target.value
+                                                    )
+                                                }
+                                            />
+                                            High{" "}
+                                            <span className="compression-hint">
+                                                (Smaller Files)
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <p className="compression-description">
+                                        Higher compression reduces file size but
+                                        may lower image quality. The PDF will be
+                                        converted to JPEG images and back to PDF
+                                        for compression.
+                                    </p>
+                                </div>
+
+                                {/* Progress bar for PDF processing */}
+                                {processingProgress > 0 && (
+                                    <div className="progress-container">
+                                        <div
+                                            className="progress-bar"
+                                            style={{
+                                                width: `${processingProgress}%`,
+                                            }}
+                                        ></div>
+                                        <div className="progress-status">
+                                            {processingStatus}
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div className="button-group">
+                                    <button
+                                        className="primary-button"
+                                        onClick={handleSavePdf}
+                                        disabled={processingProgress > 0}
+                                    >
+                                        {processingProgress > 0
+                                            ? `${
+                                                  processingStatus ||
+                                                  "Processing..."
+                                              }`
+                                            : isLoading
+                                            ? "Processing..."
+                                            : "Save Modified PDF"}
+                                    </button>
+                                    <button
+                                        className="outline-button"
+                                        onClick={() => {
+                                            // Reset now means selecting all pages again
+                                            if (pdfInfo.info.numPages) {
+                                                const allPages = Array.from(
+                                                    {
+                                                        length: pdfInfo.info
+                                                            .numPages,
+                                                    },
+                                                    (_, i) => i + 1
+                                                );
+                                                setPagesToKeep(allPages);
+                                            }
+                                        }}
+                                    >
+                                        Reset PDF
+                                    </button>
+                                    <button
+                                        className="outline-button"
+                                        onClick={handleReturnToLanding}
+                                    >
+                                        Upload New Files
+                                    </button>
+                                </div>
+                            </div>
+
+                            <hr className="divider" />
+
+                            <div className="thumbnail-section">
+                                <div className="thumbnail-header">
+                                    <p className="selection-info">
+                                        Drag and drop pages to rearrange the
+                                        document and remove pages you don't need
+                                    </p>
+                                </div>
+
+                                <ThumbnailGallery
+                                    pdfInfo={pdfInfo}
+                                    // Pass pagesToKeep state and handler
+                                    pagesToKeep={pagesToKeep}
+                                    onPagesToKeepChange={
+                                        handlePagesToKeepChange
+                                    }
+                                    generateThumbnailMainThread={
+                                        generateThumbnailMainThread
+                                    }
+                                />
                             </div>
                         </div>
+                    )}
 
-                        <hr className="divider" />
-
-                        <div className="thumbnail-section">
-                            <div className="thumbnail-header">
-                                <p className="selection-info">
-                                    Drag and drop pages to rearrange the
-                                    document and remove pages you don't need
-                                </p>
-                            </div>
-
-                            <ThumbnailGallery
-                                pdfInfo={pdfInfo}
-                                // Pass pagesToKeep state and handler
-                                pagesToKeep={pagesToKeep}
-                                onPagesToKeepChange={handlePagesToKeepChange}
-                                generateThumbnailMainThread={
-                                    generateThumbnailMainThread
-                                }
-                            />
+                    {error && (
+                        <div className="error-container">
+                            <p>
+                                <strong>Error:</strong>
+                            </p>
+                            <p>{error}</p>
                         </div>
-                    </div>
-                )}
-
-                {error && (
-                    <div className="error-container">
-                        <p>
-                            <strong>Error:</strong>
-                        </p>
-                        <p>{error}</p>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 
