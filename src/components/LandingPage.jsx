@@ -359,7 +359,7 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                 </div>
                                 <span>PrivatePDF</span>
                             </div>
-                            <p>Secure, private PDF processing that never compromises your data.</p>
+                            <p>All PDF processing happens in your browser. No files are uploaded or stored on any server.</p>
                         </div>
                     </div>
                     
