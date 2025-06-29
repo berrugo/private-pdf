@@ -133,7 +133,9 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
             <nav className="nav-header">
                 <div className="nav-container">
                     <div className="nav-brand">
-                        <FileText className="w-8 h-8 text-purple-600" />
+                        <div className="nav-brand-icon">
+                            <FileText className="w-5 h-5 text-white" />
+                        </div>
                         <span className="brand-text">PrivatePDF</span>
                     </div>
                     <div className="nav-links">
@@ -208,7 +210,7 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
 
             {/* Features Section - Updated Design */}
             <section id="features" className="features-section-updated">
-                <div class="features-container-updated">
+                <div className="features-container-updated">
                     <div className="features-header-updated">
                         <h2>Why Choose PrivatePDF?</h2>
                         <p>Built from the ground up with privacy and security as core principles</p>
@@ -335,7 +337,9 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                     <div className="footer-content">
                         <div className="footer-brand">
                             <div className="footer-logo">
-                                <FileText className="w-6 h-6 text-purple-600" />
+                                <div className="footer-brand-icon">
+                                    <FileText className="w-5 h-5 text-white" />
+                                </div>
                                 <span>PrivatePDF</span>
                             </div>
                             <p>Secure, private PDF processing that never compromises your data.</p>
