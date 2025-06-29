@@ -194,7 +194,7 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                     <Upload className="w-8 h-8 text-purple-600" />
                                 </div>
                                 <h3>Drop your PDF files here</h3>
-                                <p>or click to browse • Max 10MB • 100% Private</p>
+                                <p>or click to browse • 100% Private</p>
                                 <input
                                     type="file"
                                     accept="application/pdf"
