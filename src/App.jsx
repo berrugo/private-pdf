@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import * as pdfjsLib from "pdfjs-dist/build/pdf.mjs";
 import { usePdfProcessor } from "./hooks/usePdfProcessor";
 import LandingPage from "./components/LandingPage";
+import Footer from "./components/Footer";
 import FileUploader from "./components/FileUploader";
 import ThumbnailGallery from "./components/ThumbnailGallery";
 import "./App.css";
@@ -293,30 +294,12 @@ function App() {
                         </div>
                         <span className="brand-text">PrivatePDF</span>
                     </div>
-                    <div className="nav-links">
-                        <a href="#features" className="nav-link">
-                            Features
-                        </a>
-                        <a href="#how-it-works" className="nav-link">
-                            How it Works
-                        </a>
-                        <button
-                            className="nav-cta-button"
-                            onClick={() =>
-                                document.querySelector(".file-input").click()
-                            }
-                        >
-                            Get Started
-                        </button>
-                    </div>
                 </div>
             </nav>
             <div className="app-container">
                 <div className="content-container">
                     <div className="header">
-                        <p className="subtitle">
-                            No uploads. No Tracking. 100% secure & local
-                        </p>
+                        <p className="subtitle"></p>
                     </div>
 
                     {!pdfInfo ? (
@@ -545,6 +528,7 @@ function App() {
                     )}
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
