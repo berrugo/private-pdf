@@ -5,6 +5,7 @@ import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
 import FileUploader from "./components/FileUploader";
 import ThumbnailGallery from "./components/ThumbnailGallery";
+import { Analytics } from "@vercel/analytics/next";
 import "./App.css";
 
 try {
@@ -270,6 +271,7 @@ function App() {
 
     return (
         <>
+            <Analytics />
             <nav className="nav-header">
                 <div className="nav-container">
                     <div className="nav-brand">
