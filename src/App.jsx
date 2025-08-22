@@ -5,7 +5,7 @@ import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
 import FileUploader from "./components/FileUploader";
 import ThumbnailGallery from "./components/ThumbnailGallery";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import "./App.css";
 
 try {
