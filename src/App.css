@@ -131,6 +131,43 @@ body {
   transform: translateY(-1px);
 }
 
+/* Language Switcher */
+.language-switcher {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.lang-btn {
+  padding: 0.4rem 0.8rem;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #64748b;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.lang-btn:hover {
+  background: rgba(124, 58, 237, 0.05);
+  color: #7c3aed;
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+.lang-btn.active {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+  border-color: #7c3aed;
+  font-weight: 600;
+}
+
+.lang-btn:focus {
+  outline: 2px solid rgba(124, 58, 237, 0.3);
+  outline-offset: 2px;
+}
+
 /* Hero Section */
 .hero-section-new {
   padding: 8rem 2rem 4rem;

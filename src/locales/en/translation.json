@@ -1,0 +1,153 @@
+{
+  "app": {
+    "title": "PrivatePDF",
+    "subtitle": "Privacy-First PDF Toolkit"
+  },
+  "nav": {
+    "brand": "PrivatePDF",
+    "features": "Features",
+    "howItWorks": "How it Works",
+    "getStarted": "Get Started"
+  },
+  "landing": {
+    "hero": {
+      "title": "Private PDF Processing",
+	  "title_low": "That actually protects you",
+      "subtitle": "Process PDFs with complete privacy. No uploads, no servers, no data collection. Everything happens securely in your browser with enterprise-grade tools.",
+      "uploadButton": "Get Started - Upload PDF",
+      "processing": "Processing..."
+    },
+    "dropzone": {
+      "title": "Drop your PDF files here",
+      "subtitle": "or click to browse • 100% Private"
+    },
+    "steps": {
+      "upload": {
+        "title": "Upload Your PDF",
+        "description": "Drag and drop or click to select your PDF files. Everything stays local to your device."
+      },
+      "choose": {
+        "title": "Choose Your Action",
+        "description": "Select from our comprehensive suite of PDF tools - merge, split, compress, or convert."
+      },
+      "process": {
+        "title": "Process & Download",
+        "description": "Your PDF is processed instantly in your browser and ready for immediate download."
+      }
+    },
+    "stats": {
+      "users": "Users Trust Us",
+      "processed": "PDFs Processed",
+      "uptime": "Uptime",
+      "rating": "User Rating"
+    },
+    "privacy": {
+      "title": "Your Privacy, Guaranteed",
+      "description": "All processing happens in your browser using WebAssembly. Your files never leave your device.",
+      "points": {
+        "noUpload": "No file uploads",
+        "noStorage": "No cloud storage",
+        "noTracking": "No tracking"
+      }
+    },
+    "features": {
+      "heading": "Why Choose PrivatePDF?",
+      "description": "Built from the ground up with privacy and security as core principles",
+      "private": {
+        "title": "100% Private",
+        "description": "All processing happens in your browser. No files ever leave your device or touch our servers."
+      },
+      "fast": {
+        "title": "Lightning Fast",
+        "description": "Instant PDF processing with no upload wait times. Convert, merge, and edit PDFs in seconds."
+      },
+      "openSource": {
+        "title": "Open Source",
+        "description": "Fully transparent and community-driven. Inspect the code, contribute improvements, and trust in complete openness."
+      },
+      "fullFeatured": {
+        "title": "Full-Featured",
+        "description": "Complete PDF toolkit: merge, split, compress, remove and reorder pages."
+      }
+    },
+    "howItWorks": {
+      "heading": "How It Works",
+      "description": "Three simple steps to secure PDF processing"
+    },
+    "cta": {
+      "heading": "Ready to Process PDFs Privately?",
+      "description": "Join thousands of professionals who trust PrivatePDF for secure document processing",
+      "button": "Start Processing Now"
+    }
+  },
+  "fileUploader": {
+    "dropzone": {
+      "title": "Drag & Drop your PDFs here",
+      "subtitle": "or click to browse files (multiple allowed)"
+    },
+    "button": {
+      "select": "Select PDF Files",
+      "loading": "Loading..."
+    },
+    "privacy": "All PDF processing happens in your browser. No files are uploaded or stored on any server."
+  },
+  "editor": {
+    "mergedTitle": "Merged Document",
+    "mergedNote": "All pages from these PDFs have been merged into a single document. Rearrange pages as needed.",
+    "mergedFiles": "Merged PDFs",
+    "pageCount": "{{count}} page",
+    "pageCount_plural": "{{count}} pages",
+    "compression": {
+      "label": "Compression Level:",
+      "low": "Low",
+      "lowHint": "(Better Quality)",
+      "medium": "Medium",
+      "mediumHint": "(Balanced)",
+      "high": "High",
+      "highHint": "(Smaller Files)",
+      "description": "Higher compression reduces file size but may lower image quality. The PDF will be converted to JPEG images and back to PDF for compression."
+    },
+    "buttons": {
+      "save": "Save Modified PDF",
+      "reset": "Reset PDF",
+      "uploadNew": "Upload New Files",
+      "processing": "Processing..."
+    },
+    "thumbnail": {
+      "instruction": "Drag and drop pages to rearrange the document and remove pages you don't need"
+    },
+    "progress": {
+      "starting": "Starting PDF processing...",
+      "reordering": "Reordering {{count}} pages...",
+      "compressing": "Applying {{level}} compression...",
+      "compressingPage": "Compressing page {{current}} of {{total}}...",
+      "preparing": "Preparing download...",
+      "creating": "Creating download link...",
+      "ready": "Download ready!",
+      "error": "Error: {{message}}",
+      "compressionFailed": "Compression failed, using uncompressed PDF"
+    }
+  },
+  "thumbnailGallery": {
+    "selectAll": "Select All",
+    "deselectAll": "Deselect All",
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "page": "Page {{number}}",
+    "rotate": "Rotate",
+    "remove": "Remove"
+  },
+  "footer": {
+    "privacy": "All PDF processing happens in your browser. No files are uploaded or stored on any server.",
+    "github": "View on GitHub",
+    "madeWith": "Made with",
+    "by": "by"
+  },
+  "error": {
+    "title": "Error:",
+    "loading": "Failed to load PDF",
+    "processing": "Failed to process PDF",
+    "merging": "Failed to merge PDFs",
+    "compression": "Compression failed"
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "app": {
+    "title": "PrivatePDF",
+    "subtitle": "Herramientas PDF con Privacidad"
+  },
+  "nav": {
+    "brand": "PrivatePDF",
+    "features": "Características",
+    "howItWorks": "Cómo Funciona",
+    "getStarted": "Comenzar"
+  },
+  "landing": {
+    "hero": {
+      "title": "Procesamiento Privado de PDF",
+      "title_low": "Que realmente te protege",
+      "subtitle": "Procesa PDFs con privacidad completa. Sin cargas, sin servidores, sin recopilación de datos. Todo ocurre de forma segura en tu navegador con herramientas de nivel empresarial.",
+      "uploadButton": "Comenzar - Subir PDF",
+      "processing": "Procesando..."
+    },
+    "dropzone": {
+      "title": "Suelta tus archivos PDF aquí",
+      "subtitle": "o haz clic para buscar • 100% Privado"
+    },
+    "steps": {
+      "upload": {
+        "title": "Sube tu PDF",
+        "description": "Arrastra y suelta o haz clic para seleccionar tus archivos PDF. Todo permanece local en tu dispositivo."
+      },
+      "choose": {
+        "title": "Elige tu Acción",
+        "description": "Selecciona de nuestro completo conjunto de herramientas PDF: combinar, dividir, comprimir o convertir."
+      },
+      "process": {
+        "title": "Procesar y Descargar",
+        "description": "Tu PDF se procesa instantáneamente en tu navegador y está listo para descarga inmediata."
+      }
+    },
+    "stats": {
+      "users": "Usuarios Confían en Nosotros",
+      "processed": "PDFs Procesados",
+      "uptime": "Disponibilidad",
+      "rating": "Calificación de Usuarios"
+    },
+    "privacy": {
+      "title": "Tu Privacidad, Garantizada",
+      "description": "Todo el procesamiento ocurre en tu navegador usando WebAssembly. Tus archivos nunca salen de tu dispositivo.",
+      "points": {
+        "noUpload": "Sin cargas de archivos",
+        "noStorage": "Sin almacenamiento en la nube",
+        "noTracking": "Sin rastreo"
+      }
+    },
+    "features": {
+      "heading": "¿Por Qué Elegir PrivatePDF?",
+      "description": "Construido desde cero con la privacidad y seguridad como principios fundamentales",
+      "private": {
+        "title": "100% Privado",
+        "description": "Todo el procesamiento ocurre en tu navegador. Ningún archivo sale de tu dispositivo ni toca nuestros servidores."
+      },
+      "fast": {
+        "title": "Súper Rápido",
+        "description": "Procesamiento instantáneo de PDF sin tiempos de espera de carga. Convierte, combina y edita PDFs en segundos."
+      },
+      "openSource": {
+        "title": "Código Abierto",
+        "description": "Completamente transparente e impulsado por la comunidad. Inspecciona el código, contribuye mejoras y confía en la total apertura."
+      },
+      "fullFeatured": {
+        "title": "Completo",
+        "description": "Kit de herramientas PDF completo: combinar, dividir, comprimir, eliminar y reordenar páginas."
+      }
+    },
+    "howItWorks": {
+      "heading": "Cómo Funciona",
+      "description": "Tres simples pasos para el procesamiento seguro de PDF"
+    },
+    "cta": {
+      "heading": "¿Listo para Procesar PDFs de Forma Privada?",
+      "description": "Únete a miles de profesionales que confían en PrivatePDF para el procesamiento seguro de documentos",
+      "button": "Comenzar a Procesar Ahora"
+    }
+  },
+  "fileUploader": {
+    "dropzone": {
+      "title": "Arrastra y suelta tus PDFs aquí",
+      "subtitle": "o haz clic para buscar archivos (múltiples permitidos)"
+    },
+    "button": {
+      "select": "Seleccionar Archivos PDF",
+      "loading": "Cargando..."
+    },
+    "privacy": "Todo el procesamiento de PDF ocurre en tu navegador. Ningún archivo se carga o almacena en ningún servidor."
+  },
+  "editor": {
+    "mergedTitle": "Documento Combinado",
+    "mergedNote": "Todas las páginas de estos PDFs se han combinado en un solo documento. Reorganiza las páginas según sea necesario.",
+    "mergedFiles": "PDFs Combinados",
+    "pageCount": "{{count}} página",
+    "pageCount_plural": "{{count}} páginas",
+    "compression": {
+      "label": "Nivel de Compresión:",
+      "low": "Bajo",
+      "lowHint": "(Mejor Calidad)",
+      "medium": "Medio",
+      "mediumHint": "(Equilibrado)",
+      "high": "Alto",
+      "highHint": "(Archivos Más Pequeños)",
+      "description": "Una mayor compresión reduce el tamaño del archivo pero puede disminuir la calidad de imagen. El PDF se convertirá a imágenes JPEG y luego de vuelta a PDF para la compresión."
+    },
+    "buttons": {
+      "save": "Guardar PDF Modificado",
+      "reset": "Restablecer PDF",
+      "uploadNew": "Subir Nuevos Archivos",
+      "processing": "Procesando..."
+    },
+    "thumbnail": {
+      "instruction": "Arrastra y suelta páginas para reorganizar el documento y eliminar páginas que no necesites"
+    },
+    "progress": {
+      "starting": "Iniciando procesamiento de PDF...",
+      "reordering": "Reorganizando {{count}} páginas...",
+      "compressing": "Aplicando compresión {{level}}...",
+      "compressingPage": "Comprimiendo página {{current}} de {{total}}...",
+      "preparing": "Preparando descarga...",
+      "creating": "Creando enlace de descarga...",
+      "ready": "¡Descarga lista!",
+      "error": "Error: {{message}}",
+      "compressionFailed": "Compresión falló, usando PDF sin comprimir"
+    }
+  },
+  "thumbnailGallery": {
+    "selectAll": "Seleccionar Todo",
+    "deselectAll": "Deseleccionar Todo",
+    "zoomIn": "Acercar",
+    "zoomOut": "Alejar",
+    "page": "Página {{number}}",
+    "rotate": "Rotar",
+    "remove": "Eliminar"
+  },
+  "footer": {
+    "privacy": "Todo el procesamiento de PDF ocurre en tu navegador. Ningún archivo se carga o almacena en ningún servidor.",
+    "github": "Ver en GitHub",
+    "madeWith": "Hecho con",
+    "by": "por"
+  },
+  "error": {
+    "title": "Error:",
+    "loading": "Error al cargar PDF",
+    "processing": "Error al procesar PDF",
+    "merging": "Error al combinar PDFs",
+    "compression": "Compresión falló"
+  }
+}

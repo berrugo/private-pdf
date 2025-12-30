@@ -1,10 +1,12 @@
 import React, { useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 /**
  * Component for uploading PDF files
  * Supports multiple file uploads
  */
 const FileUploader = ({ onFileSelect, isLoading }) => {
+    const { t } = useTranslation();
     const fileInputRef = useRef(null);
 
     // Handler for file input change
@@ -46,9 +48,9 @@ const FileUploader = ({ onFileSelect, isLoading }) => {
                 onClick={() => fileInputRef.current.click()}
             >
                 <div className="dropzone-content">
-                    <p className="dropzone-title">Drag & Drop your PDFs here</p>
+                    <p className="dropzone-title">{t('fileUploader.dropzone.title')}</p>
                     <p className="dropzone-subtitle">
-                        or click to browse files (multiple allowed)
+                        {t('fileUploader.dropzone.subtitle')}
                     </p>
                     <button
                         className="select-button"
@@ -58,7 +60,7 @@ const FileUploader = ({ onFileSelect, isLoading }) => {
                         }}
                         disabled={isLoading}
                     >
-                        {isLoading ? "Loading..." : "Select PDF Files"}
+                        {isLoading ? t('fileUploader.button.loading') : t('fileUploader.button.select')}
                     </button>
                 </div>
             </div>
@@ -72,8 +74,7 @@ const FileUploader = ({ onFileSelect, isLoading }) => {
                 multiple
             />
             <p className="privacy-note">
-                All PDF processing happens in your browser. No files are uploaded
-                or stored on any server.
+                {t('fileUploader.privacy')}
             </p>
         </div>
     );

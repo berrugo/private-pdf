@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { useTranslation } from "react-i18next";
 import Footer from "./Footer";
+import LanguageSwitcher from "./LanguageSwitcher";
 import {
     FileText,
     ArrowRight,
@@ -12,49 +14,22 @@ import {
 } from "lucide-react";
 
 const LandingPage = ({ onFileSelect, isLoading }) => {
-    const [isVisible, setIsVisible] = useState(true);
-
+    const { t } = useTranslation();
     const steps = [
         {
             icon: <Upload className="w-6 h-6" />,
-            title: "Upload Your PDF",
-            description:
-                "Drag and drop or click to select your PDF files. Everything stays local to your device.",
+            title: t('landing.steps.upload.title'),
+            description: t('landing.steps.upload.description'),
         },
         {
             icon: <Shuffle className="w-6 h-6" />,
-            title: "Choose Your Action",
-            description:
-                "Select from our comprehensive suite of PDF tools - merge, split, compress, or convert.",
+            title: t('landing.steps.choose.title'),
+            description: t('landing.steps.choose.description'),
         },
         {
             icon: <Minimize2 className="w-6 h-6" />,
-            title: "Process & Download",
-            description:
-                "Your PDF is processed instantly in your browser and ready for immediate download.",
-        },
-    ];
-
-    const stats = [
-        {
-            icon: <Users className="w-6 h-6" />,
-            value: "50K+",
-            label: "Users Trust Us",
-        },
-        {
-            icon: <FileText className="w-6 h-6" />,
-            value: "2M+",
-            label: "PDFs Processed",
-        },
-        {
-            icon: <Award className="w-6 h-6" />,
-            value: "99.9%",
-            label: "Uptime",
-        },
-        {
-            icon: <TrendingUp className="w-6 h-6" />,
-            value: "4.9/5",
-            label: "User Rating",
+            title: t('landing.steps.process.title'),
+            description: t('landing.steps.process.description'),
         },
     ];
 
@@ -91,7 +66,7 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
     };
 
     return (
-        <div className={`landing-page ${isVisible ? "visible" : ""}`}>
+        <div className="landing-page visible">
             {/* Navigation Header */}
             <nav className="nav-header">
                 <div className="nav-container">
@@ -115,14 +90,15 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                 <path d="M16 17H8" />
                             </svg>
                         </div>
-                        <span className="brand-text">PrivatePDF</span>
+                        <span className="brand-text">{t('nav.brand')}</span>
                     </div>
                     <div className="nav-links">
+                        <LanguageSwitcher />
                         <a href="#features" className="nav-link">
-                            Features
+                            {t('nav.features')}
                         </a>
                         <a href="#how-it-works" className="nav-link">
-                            How it Works
+                            {t('nav.howItWorks')}
                         </a>
                         <button
                             className="nav-cta-button"
@@ -130,7 +106,7 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                 document.querySelector(".file-input").click()
                             }
                         >
-                            Get Started
+                            {t('nav.getStarted')}
                         </button>
                     </div>
                 </div>
@@ -141,19 +117,15 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                 <div className="hero-container">
                     <div className="hero-content-center">
                         <h1 className="hero-title-new">
-                            Private PDF Processing
+                            {t('landing.hero.title')}
                             <br />
                             <span className="gradient-text-new">
-                                That Actually Protects You
+                                {t('landing.hero.title_low')}
                             </span>
                         </h1>
 
                         <p className="hero-description-new">
-                            Process PDFs with complete privacy. No uploads, no
-                            servers, no data collection.
-                            <br />
-                            Everything happens securely in your browser with
-                            enterprise-grade tools.
+                            {t('landing.hero.subtitle')}
                         </p>
 
                         <div className="hero-buttons">
@@ -166,7 +138,7 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                 }
                                 disabled={isLoading}
                             >
-                                Start Processing PDFs
+                                {isLoading ? t('landing.hero.processing') : t('landing.hero.uploadButton')}
                                 <ArrowRight className="w-5 h-5" />
                             </button>
                         </div>
@@ -180,8 +152,8 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                 <div className="upload-icon-new">
                                     <Upload className="w-8 h-8 text-purple-600" />
                                 </div>
-                                <h3>Drop your PDF files here</h3>
-                                <p>or click to browse • 100% Private</p>
+                                <h3>{t('landing.dropzone.title')}</h3>
+                                <p>{t('landing.dropzone.subtitle')}</p>
                                 <input
                                     type="file"
                                     accept="application/pdf"
@@ -200,10 +172,9 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
             <section id="features" className="features-section-updated">
                 <div className="features-container-updated">
                     <div className="features-header-updated">
-                        <h2>Why Choose PrivatePDF?</h2>
+                        <h2>{t('landing.features.heading')}</h2>
                         <p>
-                            Built from the ground up with privacy and security
-                            as core principles
+                            {t('landing.features.description')}
                         </p>
                     </div>
 
@@ -224,10 +195,9 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                     <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
                                 </svg>
                             </div>
-                            <h3>100% Private</h3>
+                            <h3>{t('landing.features.private.title')}</h3>
                             <p>
-                                All processing happens in your browser. No files
-                                ever leave your device or touch our servers.
+                                {t('landing.features.private.description')}
                             </p>
                         </div>
 
@@ -247,10 +217,9 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                                 </svg>
                             </div>
-                            <h3>Lightning Fast</h3>
+                            <h3>{t('landing.features.fast.title')}</h3>
                             <p>
-                                Instant PDF processing with no upload wait
-                                times. Convert, merge, and edit PDFs in seconds.
+                                {t('landing.features.fast.description')}
                             </p>
                         </div>
 
@@ -271,11 +240,9 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                     <path d="M9 18c-4.51 2-5-2-7-2" />
                                 </svg>
                             </div>
-                            <h3>Open Source</h3>
+                            <h3>{t('landing.features.openSource.title')}</h3>
                             <p>
-                                Fully transparent and community-driven. Inspect
-                                the code, contribute improvements, and trust in
-                                complete openness.
+                                {t('landing.features.openSource.description')}
                             </p>
                         </div>
 
@@ -299,10 +266,9 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                     <path d="M16 17H8" />
                                 </svg>
                             </div>
-                            <h3>Full-Featured</h3>
+                            <h3>{t('landing.features.fullFeatured.title')}</h3>
                             <p>
-                                Complete PDF toolkit: merge, split, compress,
-                                remove and reorder pages.
+                                {t('landing.features.fullFeatured.description')}
                             </p>
                         </div>
                     </div>
@@ -313,8 +279,8 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
             <section id="how-it-works" className="how-it-works-section-new">
                 <div className="section-container">
                     <div className="section-header-new">
-                        <h2>How It Works</h2>
-                        <p>Three simple steps to secure PDF processing</p>
+                        <h2>{t('landing.howItWorks.heading')}</h2>
+                        <p>{t('landing.howItWorks.description')}</p>
                     </div>
 
                     <div className="steps-container-new">
@@ -340,10 +306,9 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
             <section className="cta-section-new">
                 <div className="cta-container">
                     <div className="cta-content-new">
-                        <h2>Ready to Process PDFs Privately?</h2>
+                        <h2>{t('landing.cta.heading')}</h2>
                         <p>
-                            Join thousands of professionals who trust PrivatePDF
-                            for secure document processing
+                            {t('landing.cta.description')}
                         </p>
                         <div className="cta-buttons-new">
                             <button
@@ -355,7 +320,7 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                                 }
                                 disabled={isLoading}
                             >
-                                Start Processing Now
+                                {t('landing.cta.button')}
                             </button>
                         </div>
                     </div>

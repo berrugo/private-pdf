@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import * as pdfjsLib from "pdfjs-dist/build/pdf.mjs";
+import { useTranslation } from "react-i18next";
 import { usePdfProcessor } from "./hooks/usePdfProcessor";
 import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
@@ -40,6 +41,8 @@ const formatFileSize = (bytes) => {
 };
 
 function App() {
+    const { t } = useTranslation();
+    
     // State for managing multiple files
     const [pdfFiles, setPdfFiles] = useState([]);
     // Rename state: pages to remove -> pages to keep
@@ -122,14 +125,14 @@ function App() {
         }
 
         // Initialize progress tracking
-        setProcessingStatus("Starting PDF processing...");
+        setProcessingStatus(t('editor.progress.starting'));
         setProcessingProgress(5);
         let resultPdfBytes;
 
         try {
             // Create a new PDF with pages in the order specified by pagesToKeep
             console.log("Creating PDF with pages in this order:", pagesToKeep);
-            setProcessingStatus(`Reordering ${pagesToKeep.length} pages...`);
+            setProcessingStatus(t('editor.progress.reordering', { count: pagesToKeep.length }));
             setProcessingProgress(15);
 
             // Use the new createPdfWithPageOrder function instead of removePages
@@ -153,7 +156,7 @@ function App() {
             setProcessingProgress(40);
 
             // Now apply compression through PDF to JPEG to PDF conversion on the modified PDF
-            setProcessingStatus(`Applying ${compressionLevel} compression...`);
+            setProcessingStatus(t('editor.progress.compressing', { level: compressionLevel }));
             console.log(
                 `Applying ${compressionLevel} compression to modified PDF...`
             );
@@ -168,7 +171,7 @@ function App() {
                 const progressPerPage = 40 / totalPages;
                 const currentProgress = baseProgress + progressPerPage * page;
                 setProcessingStatus(
-                    `Compressing page ${page} of ${totalPages}...`
+                    t('editor.progress.compressingPage', { current: page, total: totalPages })
                 );
                 setProcessingProgress(Math.min(90, currentProgress));
             };
@@ -184,18 +187,18 @@ function App() {
                 // Make a defensive copy of the compressed bytes to prevent detachment
                 resultPdfBytes = compressedPdfBytes.slice(0);
                 setProcessingProgress(92);
-                setProcessingStatus("Preparing download...");
+                setProcessingStatus(t('editor.progress.preparing'));
             } else {
                 console.warn("Compression failed, using uncompressed PDF");
                 setProcessingStatus(
-                    "Compression failed, using uncompressed PDF"
+                    t('editor.progress.compressionFailed')
                 );
                 // Continue with the uncompressed PDF if compression fails
             }
 
             if (resultPdfBytes) {
                 setProcessingProgress(95);
-                setProcessingStatus("Creating download link...");
+                setProcessingStatus(t('editor.progress.creating'));
 
                 // Create a Blob from the PDF data
                 const blob = new Blob([resultPdfBytes], {
@@ -221,7 +224,7 @@ function App() {
                 document.body.appendChild(link);
 
                 setProcessingProgress(100);
-                setProcessingStatus("Download ready!");
+                setProcessingStatus(t('editor.progress.ready'));
 
                 link.click();
                 document.body.removeChild(link);
@@ -294,7 +297,7 @@ function App() {
                                 <path d="M16 17H8" />
                             </svg>
                         </div>
-                        <span className="brand-text">PrivatePDF</span>
+                        <span className="brand-text">{t('nav.brand')}</span>
                     </div>
                 </div>
             </nav>
@@ -313,7 +316,7 @@ function App() {
                         <div className="editor-container">
                             {pdfFiles.length > 1 && pdfInfo?.info?.isMerged && (
                                 <div className="file-selector-container">
-                                    <h3>Merged PDFs ({pdfFiles.length})</h3>
+                                    <h3>{t('editor.mergedFiles')} ({pdfFiles.length})</h3>
                                     <div className="merged-files-list">
                                         {pdfFiles.map((file, index) => (
                                             /* Display file item with tooltip showing full filename on hover */
@@ -332,9 +335,7 @@ function App() {
                                         ))}
                                     </div>
                                     <p className="merge-note">
-                                        All pages from these PDFs have been
-                                        merged into a single document. Rearrange
-                                        pages as needed.
+                                        {t('editor.mergedNote')}
                                     </p>
                                 </div>
                             )}
@@ -342,12 +343,11 @@ function App() {
                                 <div>
                                     <h2>
                                         {pdfInfo?.info?.isMerged
-                                            ? "Merged Document"
+                                            ? t('editor.mergedTitle')
                                             : pdfFile?.name || "PDF Document"}
                                     </h2>
                                     <p className="page-count">
-                                        {pdfInfo.info.numPages} page
-                                        {pdfInfo.info.numPages !== 1 ? "s" : ""}
+                                        {t('editor.pageCount', { count: pdfInfo.info.numPages })}
                                         {pdfInfo.info.fileSizeBytes && (
                                             <span
                                                 style={{
@@ -368,7 +368,7 @@ function App() {
 
                                 <div className="compression-options">
                                     <p className="option-label">
-                                        Compression Level:
+                                        {t('editor.compression.label')}
                                     </p>
                                     <div className="compression-controls">
                                         <label className="compression-option">
@@ -385,9 +385,9 @@ function App() {
                                                     )
                                                 }
                                             />
-                                            Low{" "}
+                                            {t('editor.compression.low')}{" "}
                                             <span className="compression-hint">
-                                                (Better Quality)
+                                                {t('editor.compression.lowHint')}
                                             </span>
                                         </label>
                                         <label className="compression-option">
@@ -405,9 +405,9 @@ function App() {
                                                     )
                                                 }
                                             />
-                                            Medium{" "}
+                                            {t('editor.compression.medium')}{" "}
                                             <span className="compression-hint">
-                                                (Balanced)
+                                                {t('editor.compression.mediumHint')}
                                             </span>
                                         </label>
                                         <label className="compression-option">
@@ -424,17 +424,14 @@ function App() {
                                                     )
                                                 }
                                             />
-                                            High{" "}
+                                            {t('editor.compression.high')}{" "}
                                             <span className="compression-hint">
-                                                (Smaller Files)
+                                                {t('editor.compression.highHint')}
                                             </span>
                                         </label>
                                     </div>
                                     <p className="compression-description">
-                                        Higher compression reduces file size but
-                                        may lower image quality. The PDF will be
-                                        converted to JPEG images and back to PDF
-                                        for compression.
+                                        {t('editor.compression.description')}
                                     </p>
                                 </div>
 
@@ -462,11 +459,11 @@ function App() {
                                         {processingProgress > 0
                                             ? `${
                                                   processingStatus ||
-                                                  "Processing..."
+                                                  t('editor.buttons.processing')
                                               }`
                                             : isLoading
-                                            ? "Processing..."
-                                            : "Save Modified PDF"}
+                                            ? t('editor.buttons.processing')
+                                            : t('editor.buttons.save')}
                                     </button>
                                     <button
                                         className="outline-button"
@@ -484,13 +481,13 @@ function App() {
                                             }
                                         }}
                                     >
-                                        Reset PDF
+                                        {t('editor.buttons.reset')}
                                     </button>
                                     <button
                                         className="outline-button"
                                         onClick={handleReturnToLanding}
                                     >
-                                        Upload New Files
+                                        {t('editor.buttons.uploadNew')}
                                     </button>
                                 </div>
                             </div>
@@ -500,8 +497,7 @@ function App() {
                             <div className="thumbnail-section">
                                 <div className="thumbnail-header">
                                     <p className="selection-info">
-                                        Drag and drop pages to rearrange the
-                                        document and remove pages you don't need
+                                        {t('editor.thumbnail.instruction')}
                                     </p>
                                 </div>
 
@@ -523,7 +519,7 @@ function App() {
                     {error && (
                         <div className="error-container">
                             <p>
-                                <strong>Error:</strong>
+                                <strong>{t('error.title')}</strong>
                             </p>
                             <p>{error}</p>
                         </div>
