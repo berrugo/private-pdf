@@ -11,8 +11,8 @@
   },
   "landing": {
     "hero": {
-      "title": "Procesamiento Privado de PDF",
-      "title_low": "Que realmente te protege",
+      "title": "Procesa tus PDF",
+      "title_low": "de manera privada y segura",
       "subtitle": "Procesa PDFs con privacidad completa. Sin cargas, sin servidores, sin recopilación de datos. Todo ocurre de forma segura en tu navegador con herramientas de nivel empresarial.",
       "uploadButton": "Comenzar - Subir PDF",
       "processing": "Procesando..."
