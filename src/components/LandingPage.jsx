@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Footer from "./Footer";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -12,10 +12,13 @@ import {
     Users,
     Award,
     TrendingUp,
+    Menu,
+    X,
 } from "lucide-react";
 
 const LandingPage = ({ onFileSelect, isLoading }) => {
     const { t } = useTranslation();
+    const [menuOpen, setMenuOpen] = useState(false);
     const steps = [
         {
             icon: <Upload className="w-6 h-6" />,
@@ -111,6 +114,42 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                             {t('nav.getStarted')}
                         </button>
                     </div>
+                    <button
+                        className="hamburger-btn"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        {menuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                    {menuOpen && (
+                        <div className="mobile-menu">
+                            <ThemeSwitcher />
+                            <LanguageSwitcher />
+                            <a
+                                href="#features"
+                                className="mobile-menu-link"
+                                onClick={() => setMenuOpen(false)}
+                            >
+                                {t('nav.features')}
+                            </a>
+                            <a
+                                href="#how-it-works"
+                                className="mobile-menu-link"
+                                onClick={() => setMenuOpen(false)}
+                            >
+                                {t('nav.howItWorks')}
+                            </a>
+                            <button
+                                className="nav-cta-button mobile-cta"
+                                onClick={() => {
+                                    document.querySelector(".file-input").click();
+                                    setMenuOpen(false);
+                                }}
+                            >
+                                {t('nav.getStarted')}
+                            </button>
+                        </div>
+                    )}
                 </div>
             </nav>
 
