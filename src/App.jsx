@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import { usePdfProcessor } from "./hooks/usePdfProcessor";
 import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
+import LanguageSwitcher from "./components/LanguageSwitcher";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 import FileUploader from "./components/FileUploader";
 import ThumbnailGallery from "./components/ThumbnailGallery";
 import { Analytics } from "@vercel/analytics/react";
@@ -306,6 +308,10 @@ function App() {
 						</div>
 						<span className="brand-text">{t('nav.brand')}</span>
 					</div>
+					<div className="nav-links">
+						<ThemeSwitcher />
+						<LanguageSwitcher />
+					</div>
 				</div>
 			</nav>
 			<div className="app-container">
@@ -360,7 +366,7 @@ function App() {
 												style={{
 													display: "inline-block",
 													marginLeft: "5px",
-													color: "var(--text-secondary, #666)",
+													color: "var(--text-light)",
 													fontSize: "0.9rem",
 												}}
 											>

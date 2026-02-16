@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import Footer from "./Footer";
 import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeSwitcher from "./ThemeSwitcher";
 import {
     FileText,
     ArrowRight,
@@ -93,6 +94,7 @@ const LandingPage = ({ onFileSelect, isLoading }) => {
                         <span className="brand-text">{t('nav.brand')}</span>
                     </div>
                     <div className="nav-links">
+                        <ThemeSwitcher />
                         <LanguageSwitcher />
                         <a href="#features" className="nav-link">
                             {t('nav.features')}

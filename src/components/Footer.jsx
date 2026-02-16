@@ -40,21 +40,7 @@ const Footer = () => {
 								href="https://github.com/berrugo/private-pdf"
 								target="_blank"
 								rel="noopener noreferrer"
-								style={{
-									display: "inline-flex",
-									alignItems: "center",
-									gap: "0.5rem",
-									color: "#9ca3af",
-									textDecoration: "none",
-									fontSize: "0.875rem",
-									transition: "color 0.3s ease",
-								}}
-								onMouseEnter={(e) =>
-									(e.target.style.color = "#ffffff")
-								}
-								onMouseLeave={(e) =>
-									(e.target.style.color = "#9ca3af")
-								}
+								className="footer-github-link"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"

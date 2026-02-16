@@ -10,23 +10,16 @@ const LanguageSwitcher = () => {
     // Get current language, handle cases like 'en-US' -> 'en'
     const currentLang = i18n.language?.split('-')[0] || 'en';
 
+    const nextLang = currentLang === 'en' ? 'es' : 'en';
+
     return (
-        <div className="language-switcher">
-            <button
-                className={`lang-btn ${currentLang === 'en' ? 'active' : ''}`}
-                onClick={() => changeLanguage('en')}
-                aria-label="Switch to English"
-            >
-                EN
-            </button>
-            <button
-                className={`lang-btn ${currentLang === 'es' ? 'active' : ''}`}
-                onClick={() => changeLanguage('es')}
-                aria-label="Cambiar a Español"
-            >
-                ES
-            </button>
-        </div>
+        <button
+            className="lang-btn"
+            onClick={() => changeLanguage(nextLang)}
+            aria-label={currentLang === 'en' ? 'Cambiar a Español' : 'Switch to English'}
+        >
+            {currentLang === 'en' ? '🇺🇸 EN' : '🇪🇸 ES'}
+        </button>
     );
 };
 
